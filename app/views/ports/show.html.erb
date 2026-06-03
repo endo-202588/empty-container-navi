@@ -1,0 +1,21 @@
+<h1><%= @port.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>船社</th>
+      <th>種別</th>
+      <th>在庫数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @container_stocks.each do |stock| %>
+      <tr>
+        <td><%= stock.carrier.name %></td>
+        <td><%= stock.container_type_i18n %></td>
+        <td><%= stock.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

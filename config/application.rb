@@ -10,6 +10,8 @@ module App
 
     config.autoload_lib(ignore: %w[assets tasks])
 
+    config.i18n.default_locale = :ja
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,

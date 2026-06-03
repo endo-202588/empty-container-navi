@@ -1,0 +1,11 @@
+<div>
+  <h1>港一覧</h1>
+
+  <ul>
+    <% @ports.each do |port| %>
+      <li>
+        <%= link_to port.name, port_path(port) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

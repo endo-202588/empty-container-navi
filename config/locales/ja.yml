@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      port: 港
+      carrier: 船社
+      container_stock: 空コン在庫
+
+    attributes:
+      port:
+        name: 港名
+
+      carrier:
+        name: 船社名
+
+      container_stock:
+        port: 港
+        carrier: 船社
+        container_type: コンテナ種別
+        quantity: 在庫数
+
+  enums:
+    container_stock:
+      container_type:
+        dry: ドライ
+        reefer: リーファー
