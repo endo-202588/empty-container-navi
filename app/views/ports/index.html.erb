@@ -1,11 +1,19 @@
-<div>
-  <h1>港一覧</h1>
+<div class="min-h-screen flex flex-col bg-sky-100 p-8">
+  <h1 class="font-bold text-2xl">港一覧</h1>
 
-  <ul>
+  <div class="w-full flex justify-center">
+    <%= image_tag "map.svg", class: "relative w-[900px]" %>
+
     <% @ports.each do |port| %>
-      <li>
-        <%= link_to port.name, port_path(port) %>
-      </li>
+      <%= link_to port_path(port),
+          class: "absolute",
+          style: "left: #{port.map_x}%; top: #{port.map_y}%;" do %>
+
+        <span class="text-ms">
+          ● <%= port.name %>
+        </span>
+
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 </div>
