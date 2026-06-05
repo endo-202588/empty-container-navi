@@ -14,7 +14,7 @@ class PortsController < ApplicationController
   end
 
   def create
-    @port = Port.build(port_params)
+    @port = Port.new(port_params)
 
     if @port.save
       redirect_to ports_path, success: "港を登録しました"
