@@ -8,6 +8,9 @@ gem "pg", "~> 1.1"
 # Server
 gem "puma", ">= 5.0"
 
+# Authentication
+gem "sorcery", "~> 0.18"
+
 # Asset
 gem "sprockets-rails"
 gem "importmap-rails"
