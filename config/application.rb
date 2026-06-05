@@ -22,6 +22,13 @@ module App
         request_specs: true
 
       g.fixture_replacement :factory_bot, dir: "spec/factories"
+
+      g.helper false
+      g.assets false
+      g.stylesheets false
+      g.javascripts false
+
+      g.skip_routes true
     end
   end
 end

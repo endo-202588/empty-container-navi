@@ -4,6 +4,7 @@ ja:
       port: 港
       carrier: 船社
       container_stock: 空コン在庫
+      user: ユーザー
 
     attributes:
       port:
@@ -17,6 +18,13 @@ ja:
         carrier: 船社
         container_type: コンテナ種別
         quantity: 在庫数
+
+      user:
+        email: メールアドレス
+        password: パスワード
+        first_name: 名
+        last_name: 姓
+        company_name: 会社名
 
   enums:
     container_stock:
