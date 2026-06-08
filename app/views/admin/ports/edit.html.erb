@@ -1,0 +1,17 @@
+<div class="min-h-screen bg-sky-100 p-8">
+  <div class="max-w-5xl mx-auto bg-white rounded-lg shadow p-8">
+
+    <h1 class="text-3xl font-bold text-sky-800 mb-8">
+      港編集
+    </h1>
+
+    <%= render "form", port: @port %>
+
+    <div class="mt-8">
+      <%= link_to "← 港管理へ戻る",
+          admin_ports_path,
+          class: "inline-block px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition" %>
+    </div>
+
+  </div>
+</div>

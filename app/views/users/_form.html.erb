@@ -9,6 +9,5 @@
   <%= f.input :company_name %>
 
   <%= f.button :submit,
-      (@user.persisted? ? "更新する" : "登録する"),
-      class: "w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-4" %>
+      (@user.persisted? ? "更新する" : "登録する") %>
 <% end %>

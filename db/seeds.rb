@@ -18,3 +18,47 @@ yokohama.update!(map_x: 59, map_y: 71)
 
 kobe = Port.find_or_create_by!(name: "神戸港")
 kobe.update!(map_x: 40, map_y: 73)
+
+one = Carrier.find_by!(name: "ONE")
+msc = Carrier.find_by!(name: "MSC")
+maersk = Carrier.find_by!(name: "Maersk")
+
+ContainerStock.find_or_create_by!(
+  port: tokyo,
+  carrier: one,
+  container_type: :dry
+) do |stock|
+  stock.quantity = 100
+end
+
+ContainerStock.find_or_create_by!(
+  port: tokyo,
+  carrier: msc,
+  container_type: :dry
+) do |stock|
+  stock.quantity = 50
+end
+
+ContainerStock.find_or_create_by!(
+  port: tokyo,
+  carrier: one,
+  container_type: :reefer
+) do |stock|
+  stock.quantity = 20
+end
+
+ContainerStock.find_or_create_by!(
+  port: yokohama,
+  carrier: one,
+  container_type: :dry
+) do |stock|
+  stock.quantity = 80
+end
+
+ContainerStock.find_or_create_by!(
+  port: yokohama,
+  carrier: maersk,
+  container_type: :reefer
+) do |stock|
+  stock.quantity = 30
+end

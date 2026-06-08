@@ -1,0 +1,52 @@
+<%= simple_form_for [:admin, port],
+    html: { data: { controller: "map-preview" } } do |f| %>
+
+  <div class="mt-4">
+    <%= f.input :name,
+        label: "名前" %>
+
+    <%= f.input :map_x,
+        label: "x軸",
+        input_html: {
+          step: 0.1,
+          data: {
+            map_preview_target: "x",
+            action: "input->map-preview#update"
+          }
+        } %>
+
+    <%= f.input :map_y,
+        label: "y軸",
+        input_html: {
+          step: 0.1,
+          data: {
+            map_preview_target: "y",
+            action: "input->map-preview#update"
+          }
+        } %>
+
+    <h2 class="mt-8 mb-4 text-lg font-bold">
+      地図プレビュー
+    </h2>
+
+    <div class="relative w-full max-w-[900px] border rounded bg-sky-50 overflow-hidden">
+      <%= image_tag "map.svg", class: "w-full" %>
+
+      <div
+        data-map-preview-target="marker"
+        class="absolute font-bold text-red-600"
+        style="
+          left: <%= port.map_x %>%;
+          top: <%= port.map_y %>%;
+        "
+      >
+        ● <%= port.name %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.button :submit,
+      (port.persisted? ? "更新する" : "登録する"),
+      class: "w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-4" %>
+
+<% end %>

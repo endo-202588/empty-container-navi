@@ -9,4 +9,9 @@ class ContainerStock < ApplicationRecord
 
   validates :quantity,
             numericality: { greater_than_or_equal_to: 0 }
+
+  validates :carrier_id,
+          uniqueness: {
+            scope: %i[port_id container_type]
+          }
 end
