@@ -6,7 +6,15 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :ports
+  namespace :admin do
+    root "dashboard#index"
+
+    resources :ports
+    resources :container_stocks,
+          only: %i[index new create edit update destroy]
+  end
+
+  resources :ports, only: %i[index show]
 
   resources :users, only: %i[new create]
 

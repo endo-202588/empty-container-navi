@@ -1,0 +1,66 @@
+<div class="min-h-screen bg-sky-100 p-8">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-sky-800 mb-6">
+      港管理
+    </h1>
+
+    <%= link_to "＋ 新規港登録",
+        new_admin_port_path,
+        class: "inline-block px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition" %>
+  </div>
+
+  <div class="bg-white rounded-lg shadow overflow-hidden">
+    <table class="min-w-full">
+      <thead class="bg-sky-600 text-white">
+        <tr>
+          <th class="px-6 py-3 text-left">港名</th>
+          <th class="px-6 py-3 text-right">X座標</th>
+          <th class="px-6 py-3 text-right">Y座標</th>
+          <th class="px-6 py-3 text-center">操作</th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-200">
+        <% @ports.each do |port| %>
+          <tr class="hover:bg-sky-50">
+            <td class="px-6 py-4 font-medium">
+              <%= port.name %>
+            </td>
+
+            <td class="px-6 py-4 text-right">
+              <%= port.map_x %>
+            </td>
+
+            <td class="px-6 py-4 text-right">
+              <%= port.map_y %>
+            </td>
+
+            <td class="px-6 py-4 text-center">
+              <div class="flex justify-center gap-2">
+
+                <%= link_to "編集",
+                    edit_admin_port_path(port),
+                    class: "inline-block px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700 transition" %>
+
+                <%= link_to "削除",
+                    admin_port_path(port),
+                    data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "#{port.name}を削除しますか？"
+                    },
+                    class: "inline-block px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition" %>
+
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-6">
+    <%= link_to "← 管理画面へ戻る",
+        admin_root_path,
+        class: "inline-block px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition" %>
+  </div>
+</div>
