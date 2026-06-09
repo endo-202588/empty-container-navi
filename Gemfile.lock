@@ -178,6 +178,8 @@ GEM
     nio4r (2.7.5)
     nokogiri (1.19.3-aarch64-linux-gnu)
       racc (~> 1.4)
+    nokogiri (1.19.3-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth (1.1.5)
@@ -205,6 +207,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.6.3-aarch64-linux)
+    pg (1.6.3-arm64-darwin)
     pg (1.6.3-x86_64-linux)
     pp (0.6.3)
       prettyprint
@@ -351,6 +354,7 @@ GEM
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
     tailwindcss-ruby (4.3.0-aarch64-linux-gnu)
+    tailwindcss-ruby (4.3.0-arm64-darwin)
     tailwindcss-ruby (4.3.0-x86_64-linux-gnu)
     thor (1.5.0)
     timeout (0.6.1)
@@ -382,6 +386,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-24
   x86_64-linux
 
 DEPENDENCIES

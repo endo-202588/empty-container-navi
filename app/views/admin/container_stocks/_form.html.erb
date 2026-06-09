@@ -7,9 +7,8 @@
       label: "船社" %>
 
   <%= f.input :container_type,
-      collection: ContainerStock.container_types.keys.map { |k|
-        [ContainerStock.human_attribute_name("container_type.#{k}"), k]
-      },
+      as: :select,
+      collection: ContainerStock.container_types_i18n.invert,
       label: "種別" %>
 
   <%= f.input :quantity,
