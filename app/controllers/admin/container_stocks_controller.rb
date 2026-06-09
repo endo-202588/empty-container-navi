@@ -1,9 +1,11 @@
 class Admin::ContainerStocksController < Admin::BaseController
-  # before_action :set_container_stock, only: %i[show edit update destroy]
+  before_action :set_container_stock, only: %i[edit update destroy]
 
   def index
     @container_stocks =
       ContainerStock.includes(:port, :carrier)
+      .joins(:port)
+      .order("ports.name ASC", "container_stocks.created_at DESC")
   end
 
   def new
@@ -19,6 +21,23 @@ class Admin::ContainerStocksController < Admin::BaseController
     else
       render :new, status: :unprocessable_content
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @container_stock.update(container_stock_params)
+      redirect_to admin_container_stocks_path,
+                  success: "在庫を更新しました"
+    else
+      render :edit, status: :unprocessable_content
+    end
+  end
+
+  def destroy
+    @container_stock.destroy
+    redirect_to admin_container_stocks_path, success: "削除しました"
   end
 
   private
