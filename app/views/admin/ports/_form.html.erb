@@ -1,7 +1,7 @@
 <%= simple_form_for [:admin, port],
     html: { data: { controller: "map-preview" } } do |f| %>
 
-  <div class="mt-4 relative w-full max-w-[900px] overflow-hidden mx-auto">
+  <div class="mt-4 w-full max-w-[900px] overflow-hidden mx-auto">
     <%= f.input :name,
       label: "名前",
       input_html: {
@@ -36,7 +36,7 @@
     </h2>
 
 
-    <div class="border rounded bg-sky-50">
+    <div class="border rounded bg-sky-50 relative">
       <%= image_tag "map.svg", class: "w-full" %>
 
       <div
