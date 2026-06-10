@@ -10,14 +10,17 @@ class Admin::PortsController < Admin::BaseController
   end
 
   def new
-    @port = Port.new
+    @port = Port.new(
+      map_x: 50,
+      map_y: 50
+    )
   end
 
   def create
     @port = Port.new(port_params)
 
     if @port.save
-      redirect_to ports_path, success: "港を登録しました"
+      redirect_to admin_ports_path, success: "港を登録しました"
     else
       render :new, status: :unprocessable_content
     end
@@ -39,7 +42,7 @@ class Admin::PortsController < Admin::BaseController
 
   def destroy
     @port.destroy
-    redirect_to ports_path, success: "削除しました"
+    redirect_to admin_ports_path, success: "削除しました"
   end
 
   private

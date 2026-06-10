@@ -1,11 +1,14 @@
-<div class="min-h-screen bg-sky-100 p-8">
-  <div class="max-w-5xl mx-auto bg-white rounded-lg shadow p-8">
+<div class="container mx-auto px-4">
 
-    <h1 class="text-3xl font-bold text-sky-800 mb-8">
-      港編集
+  <div class="max-w-6xl mx-auto mt-10 bg-white p-8 rounded-xl shadow">
+
+    <h1 class="text-center text-2xl font-bold">
+      港の編集
     </h1>
 
-    <%= render "form", port: @port %>
+    <div class="mt-6">
+      <%= render "form", port: @port %>
+    </div>
 
     <div class="mt-8">
       <%= link_to admin_ports_path,
@@ -25,4 +28,5 @@
     </div>
 
   </div>
+
 </div>
