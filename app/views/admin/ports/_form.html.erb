@@ -1,9 +1,15 @@
 <%= simple_form_for [:admin, port],
     html: { data: { controller: "map-preview" } } do |f| %>
 
-  <div class="mt-4">
+  <div class="mt-4 relative w-full max-w-[900px] overflow-hidden mx-auto">
     <%= f.input :name,
-        label: "名前" %>
+      label: "名前",
+      input_html: {
+        data: {
+          map_preview_target: "nameInput",
+          action: "input->map-preview#updateName"
+        }
+      } %>
 
     <%= f.input :map_x,
         label: "x軸",
@@ -29,24 +35,25 @@
       地図プレビュー
     </h2>
 
-    <div class="relative w-full max-w-[900px] border rounded bg-sky-50 overflow-hidden">
+
+    <div class="border rounded bg-sky-50">
       <%= image_tag "map.svg", class: "w-full" %>
 
       <div
-        data-map-preview-target="marker"
-        class="absolute font-bold text-red-600"
+        data-map-preview-target="name"
+        class="absolute text-red-600 font-bold whitespace-nowrap"
         style="
-          left: <%= port.map_x %>%;
-          top: <%= port.map_y %>%;
+          left: <%= port.map_x || 50 %>%;
+          top: <%= port.map_y || 50 %>%;
+          transform: translate(-50%, -50%);
         "
       >
-        ● <%= port.name %>
+        <%= port.name %>
       </div>
     </div>
+
+    <%= f.button :submit,
+        (port.persisted? ? "更新する" : "登録する"),
+        class: "w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-4" %>
   </div>
-
-  <%= f.button :submit,
-      (port.persisted? ? "更新する" : "登録する"),
-      class: "w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-4" %>
-
 <% end %>
