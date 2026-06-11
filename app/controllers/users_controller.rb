@@ -27,7 +27,6 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :company_name,
-      :role
     )
   end
 end
