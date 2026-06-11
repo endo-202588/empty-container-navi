@@ -1,0 +1,26 @@
+<%= simple_form_for [:admin, route] do |f| %>
+
+  <% if route.errors.any? %>
+    <div class="mb-6 rounded bg-red-100 p-4 text-red-700">
+      <ul>
+        <% route.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.association :departure_port,
+      collection: Port.order(:name),
+      label: "出発港" %>
+
+  <%= f.association :arrival_port,
+      collection: Port.order(:name),
+      label: "到着港" %>
+
+  <div class="mt-6">
+    <%= f.button :submit,
+        class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" %>
+  </div>
+
+<% end %>

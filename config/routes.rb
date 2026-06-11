@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :ports
     resources :container_stocks,
           only: %i[index new create edit update destroy]
+    resources :routes
+    resources :voyages
   end
 
   resources :ports, only: %i[index show]

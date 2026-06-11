@@ -2,7 +2,7 @@ class PortsController < ApplicationController
   before_action :set_port, only: %i[show edit update destroy]
 
   def index
-    @ports = Port.all
+    @ports = Port.where(country: "JP")
   end
 
   def show

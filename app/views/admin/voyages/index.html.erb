@@ -1,0 +1,89 @@
+<div class="min-h-screen p-8">
+
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-sky-800">
+      便管理
+    </h1>
+
+    <%= link_to "＋ 新規便登録",
+        new_admin_voyage_path,
+        class: "inline-block px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition" %>
+  </div>
+
+  <div class="bg-white rounded-lg shadow overflow-hidden">
+    <table class="min-w-full">
+      <thead class="bg-sky-600 text-white">
+        <tr>
+          <th class="px-6 py-3 text-left">
+            航路
+          </th>
+
+          <th class="px-6 py-3 text-left">
+            日付
+          </th>
+
+          <th class="px-6 py-3 text-left">
+            操作
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-200">
+        <% @voyages.each do |voyage| %>
+
+          <tr class="hover:bg-sky-50">
+
+            <td class="px-6 py-3">
+              <%= voyage.route %>
+            </td>
+
+            <td class="px-6 py-3">
+              <%= voyage.departure_date %>
+            </td>
+
+            <td class="px-6 py-3">
+
+              <div class="flex items-center gap-2">
+                <%= link_to "編集",
+                    edit_admin_voyage_path(voyage),
+                    class: "inline-block px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 transition" %>
+
+                <%= button_to "削除",
+                    admin_voyage_path(voyage),
+                    method: :delete,
+                    data: {
+                      turbo_confirm: "削除しますか？"
+                    },
+                    class: "px-3 py-1 bg-red-500 text-white rounded" %>
+              </div>
+
+            </td>
+
+          </tr>
+
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-6">
+    <%= link_to admin_root_path,
+        class: "inline-flex items-center px-3 py-2 bg-gray-200 rounded hover:bg-gray-300 transition" do %>
+
+      <svg xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-5 h-5">
+        <path stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+
+      <span>管理画面へ戻る</span>
+
+    <% end %>
+  </div>
+
+</div>
