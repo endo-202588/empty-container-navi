@@ -9,6 +9,10 @@ class User < ApplicationRecord
     forwarder: 2
   }
 
+  validates :password,
+            confirmation: true,
+            if: -> { new_record? || password.present? }
+
   validates :company_name, presence: true
   validates :email,
             presence: true,

@@ -1,0 +1,42 @@
+<%= simple_form_for [:admin, voyage] do |f| %>
+
+  <% if voyage.errors.any? %>
+    <div class="mb-6 rounded bg-red-100 p-4 text-red-700">
+      <ul>
+        <% voyage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.association :route,
+      collection: Route.order(:departure_port_id),
+      label: "航路",
+      prompt: "航路を選択してください" %>
+
+  <%= f.input :departure_date,
+      as: :date,
+      html5: true,
+      label: "出発日" %>
+
+  <%= f.input :dry_capacity,
+      label: "ドライコンテナ数",
+      input_html: {
+        min: 0,
+        step: 1
+      } %>
+
+  <%= f.input :reefer_capacity,
+      label: "冷蔵コンテナ数",
+      input_html: {
+        min: 0,
+        step: 1
+      } %>
+
+  <div class="mt-6">
+    <%= f.button :submit,
+        class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" %>
+  </div>
+
+<% end %>

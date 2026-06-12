@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 7.2.3", ">= 7.2.3.1"
+gem "rails", "~> 8.1"
 
 # Database
 gem "pg", "~> 1.1"
@@ -23,6 +23,9 @@ gem "jbuilder"
 
 # Form
 gem "simple_form"
+
+# Decorator
+gem "draper"
 
 # Enum
 gem "enum_help", "0.0.19"
