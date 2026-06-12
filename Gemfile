@@ -24,6 +24,9 @@ gem "jbuilder"
 # Form
 gem "simple_form"
 
+# Decorator
+gem "draper"
+
 # Enum
 gem "enum_help", "0.0.19"
 

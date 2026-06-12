@@ -1,4 +1,4 @@
-<div class="min-h-screen p-8">
+<div class="min-h-screen">
   <h1 class="text-3xl font-bold text-sky-800 mb-8">
     管理画面
   </h1>
@@ -21,11 +21,37 @@
         class: "block bg-white rounded-lg shadow p-6 hover:bg-sky-50 transition" do %>
 
       <h2 class="text-xl font-semibold text-sky-700">
-        在庫管理
+        空コンテナ在庫管理
       </h2>
 
       <p class="text-gray-600 mt-2">
         港ごとの空コンテナ在庫を管理します
+      </p>
+
+    <% end %>
+
+    <%= link_to admin_routes_path,
+        class: "block bg-white rounded-lg shadow p-6 hover:bg-sky-50 transition" do %>
+
+      <h2 class="text-xl font-semibold text-sky-700">
+        航路管理
+      </h2>
+
+      <p class="text-gray-600 mt-2">
+        航路を管理します
+      </p>
+
+    <% end %>
+
+    <%= link_to admin_voyages_path,
+        class: "block bg-white rounded-lg shadow p-6 hover:bg-sky-50 transition" do %>
+
+      <h2 class="text-xl font-semibold text-sky-700">
+        便管理
+      </h2>
+
+      <p class="text-gray-600 mt-2">
+        便を管理します
       </p>
 
     <% end %>

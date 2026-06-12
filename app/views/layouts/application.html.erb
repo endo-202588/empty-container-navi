@@ -13,6 +13,7 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -20,9 +21,13 @@
 
   <body class="bg-sky-100">
 
+    <% if current_user %>
+      <%= render "shared/header" %>
+    <% end %>
+
     <%= render "shared/flash" %>
     
-    <main class="flex-1 relative z-10">
+    <main class="container mx-auto px-8 py-8 flex-1 relative z-10">
       <%= yield %>
     </main>
   </body>
