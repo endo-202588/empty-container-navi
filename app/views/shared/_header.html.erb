@@ -1,0 +1,85 @@
+<header class="relative bg-zinc-200 z-30" data-controller="menu">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+
+    <div>
+      <%= link_to "空コンナビ",
+          ports_path,
+          class: "font-bold text-xl" %>
+    </div>
+
+    <!-- 🍔 ハンバーガー（スマホのみ） -->
+    <button
+      data-action="click->menu#toggle"
+      class="md:hidden text-gray-700"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+
+    <!-- 🖥 PCメニュー -->
+    <div class="hidden md:flex items-center gap-6">
+
+      <%= link_to "#",
+        class: "flex items-center gap-1 text-gray-700 font-medium hover:text-yellow-500 whitespace-nowrap" do %>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 512 512" fill="currentColor">
+          <path d="M256 141.3l0 309.3 .5-.2C311.1 427.7 369.7 416 428.8 416l19.2 0 0-320-19.2 0c-42.2 0-84.1 8.4-123.1 24.6-16.8 7-33.4 13.9-49.7 20.7zM230.9 61.5L256 72 281.1 61.5C327.9 42 378.1 32 428.8 32L464 32c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-35.2 0c-50.7 0-100.9 10-147.7 29.5l-12.8 5.3c-7.9 3.3-16.7 3.3-24.6 0l-12.8-5.3C184.1 490 133.9 480 83.2 480L48 480c-26.5 0-48-21.5-48-48L0 80C0 53.5 21.5 32 48 32l35.2 0c50.7 0 100.9 10 147.7 29.5z"/>
+        </svg>
+
+        <span>このアプリの使い方</span>
+      <% end %>
+
+      <% if current_user.admin? %>
+        <div class="relative group">
+          <button class="text-gray-700 font-medium hover:text-yellow-500 whitespace-nowrap">管理</button>
+
+          <div class="absolute left-0 hidden group-hover:block bg-white border rounded shadow-md w-40">
+
+            <%= link_to "ダッシュボード",
+                admin_root_path,
+                class: "block px-4 py-2 hover:bg-gray-100" %>
+
+            <%= link_to "港管理",
+                admin_ports_path,
+                class: "block px-4 py-2 hover:bg-gray-100" %>
+
+            <%= link_to "航路管理",
+                admin_routes_path,
+                class: "block px-4 py-2 hover:bg-gray-100" %>
+
+          </div>
+        </div>
+      <% end %>
+
+      <%= link_to "#{current_user.decorate.full_name}さん",
+                "#",
+                class: "font-semibold text-sky-800 hover:text-sky-600 whitespace-nowrap" %>
+
+      <div>
+        <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, class: "text-olive-600 hover:underline whitespace-nowrap" %>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 📱 スマホメニュー -->
+  <div
+    data-menu-target="menu"
+    class="hidden md:hidden bg-white border-t space-y-3"
+  >
+
+    <%= link_to "このアプリの楽しみ方", guide_path, class: "block px-2 py-1 hover:bg-sky-100" %>
+    <%= link_to "にゃんドルランキング", ports_path, class: "block px-2 py-1 hover:bg-sky-100" %>
+    <%= link_to "CMランキング", ports_path, class: "block px-2 py-1 hover:bg-sky-100" %>
+
+    <% if current_user.admin? %>
+      <%= link_to "ダッシュボード", admin_root_path, class: "block px-2 py-1 hover:bg-sky-100" %>
+      <%= link_to "ユーザー管理", admin_ports_path, class: "block px-2 py-1 hover:bg-sky-100" %>
+      <%= link_to "にゃんドル管理", admin_routes_path, class: "block px-2 py-1 hover:bg-sky-100" %>
+    <% end %>
+
+    <%= link_to "#{current_user.first_name}さん", "#", class: "block px-2 py-1 hover:bg-yellow-100" %>
+    <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, class: "block px-2 py-1 hover:bg-yellow-100" %>
+  </div>
+</header>
