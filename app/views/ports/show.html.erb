@@ -3,7 +3,11 @@
     <%= @port.name %>
   </h1>
 
-  <div class="bg-white rounded-lg shadow overflow-hidden">
+  <h2 class="mt-8 mb-4 text-2xl font-bold text-sky-700">
+    空コンテナ数
+  </h2>
+
+  <div class="mt-2 bg-white rounded-lg shadow overflow-hidden">
     <table class="min-w-full">
       <thead class="bg-sky-600 text-white">
         <tr>
@@ -27,6 +31,96 @@
             <td class="px-6 py-4 text-right font-semibold">
               <%= stock.quantity %>
             </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="mt-8 mb-4 text-2xl font-bold text-sky-700">
+    出港予定便
+  </h2>
+
+  <div class="mt-2 bg-white rounded-lg shadow overflow-hidden">
+    <table class="min-w-full">
+      <thead class="bg-sky-600 text-white">
+        <tr>
+          <th class="px-6 py-3 text-left">
+            船社
+          </th>
+
+          <th class="px-6 py-3 text-left">
+            航路
+          </th>
+
+          <th class="px-6 py-3 text-left">
+            出港日
+          </th>
+
+          <th class="px-6 py-3 text-left">
+            ドライ残枠
+          </th>
+
+          <th></th>
+
+          <th class="px-6 py-3 text-left">
+            冷凍残枠
+          </th>
+
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-200">
+        <% @voyages.each do |voyage| %>
+          <tr class="hover:bg-sky-50">
+
+            <td class="px-6 py-4">
+              <%= voyage.carrier.name %>
+            </td>
+
+            <td class="px-6 py-4">
+              <%= voyage.route.departure_port.name %>
+              →
+              <%= voyage.route.arrival_port.name %>
+            </td>
+
+            <td class="px-6 py-4">
+              <%= voyage.departure_date %>
+            </td>
+
+            <td class="px-6 py-4">
+              <%= voyage.dry_capacity %>
+            </td>
+
+            <td class="px-6 py-4">
+              <% if voyage.reservable_from?(@port, :dry) %>
+                <%= link_to "予約",
+                        "#",
+                        class: "inline-block px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition" %>
+              <% else %>
+                <span class="text-gray-400">
+                  在庫なし
+                </span>
+              <% end %>
+            </td>
+
+            <td class="px-6 py-4">
+              <%= voyage.reefer_capacity %>
+            </td>
+
+            <td class="px-6 py-4">
+              <% if voyage.reservable_from?(@port, :reefer) %>
+                <%= link_to "予約",
+                        "#",
+                        class: "inline-block px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition" %>
+              <% else %>
+                <span class="text-gray-400">
+                  在庫なし
+                </span>
+              <% end %>
+            </td>
+
           </tr>
         <% end %>
       </tbody>

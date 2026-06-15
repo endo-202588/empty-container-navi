@@ -8,6 +8,7 @@ class Admin::VoyagesController < Admin::BaseController
   def index
     @voyages =
       Voyage.includes(
+        :carrier,
         route: [
           :departure_port,
           :arrival_port

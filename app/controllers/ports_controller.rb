@@ -7,6 +7,23 @@ class PortsController < ApplicationController
 
   def show
     @container_stocks = @port.container_stocks.includes(:carrier)
+
+    @voyages =
+      Voyage
+        .includes(
+          :carrier,
+          route: [
+            :departure_port,
+            :arrival_port
+          ]
+        )
+        .joins(:route)
+        .where(
+          routes: {
+            departure_port_id: @port.id
+          }
+        )
+        .order(:departure_date)
   end
 
   def new

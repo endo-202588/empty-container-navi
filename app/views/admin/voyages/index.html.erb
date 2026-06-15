@@ -19,6 +19,10 @@
           </th>
 
           <th class="px-6 py-3 text-left">
+            船会社
+          </th>
+
+          <th class="px-6 py-3 text-left">
             日付
           </th>
 
@@ -34,7 +38,13 @@
           <tr class="hover:bg-sky-50">
 
             <td class="px-6 py-3">
-              <%= voyage.route %>
+              <%= voyage.route.departure_port.name %>
+              →
+              <%= voyage.route.arrival_port.name %>
+            </td>
+
+            <td class="px-6 py-3">
+              <%= voyage.carrier.name %>
             </td>
 
             <td class="px-6 py-3">

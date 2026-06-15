@@ -1,5 +1,9 @@
 class Voyage < ApplicationRecord
   belongs_to :route
+  belongs_to :carrier
+
+  has_many :bookings,
+           dependent: :destroy
 
   validate :voyage_must_be_unique
 
@@ -14,6 +18,16 @@ class Voyage < ApplicationRecord
               only_integer: true,
               greater_than_or_equal_to: 0
             }
+
+  def reservable_from?(port, container_type)
+    port.container_stocks
+        .where(
+          carrier_id: carrier_id,
+          container_type: container_type
+        )
+        .where("quantity > 0")
+        .exists?
+  end
 
   private
 

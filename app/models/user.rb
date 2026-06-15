@@ -3,6 +3,9 @@ class User < ApplicationRecord
 
   before_validation :downcase_email
 
+  has_many :bookings,
+           dependent: :destroy
+
   enum :role, {
     admin: 0,
     carrier: 1,

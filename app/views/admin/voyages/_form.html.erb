@@ -15,6 +15,10 @@
       label: "航路",
       prompt: "航路を選択してください" %>
 
+  <%= f.association :carrier,
+    prompt: "選択してください",
+    label: "船社" %>
+
   <%= f.input :departure_date,
       as: :date,
       html5: true,

@@ -12,10 +12,6 @@ class Route < ApplicationRecord
 
   validate :departure_and_arrival_must_differ
 
-  def to_s
-    "#{departure_port.name} → #{arrival_port.name}"
-  end
-
   private
 
   def departure_and_arrival_must_differ
