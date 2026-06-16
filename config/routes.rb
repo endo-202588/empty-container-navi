@@ -25,4 +25,13 @@ Rails.application.routes.draw do
   delete "logout", to: "user_sessions#destroy"
 
   get "guide", to: "guides#show"
+
+  resources :voyages,
+            only: %i[show] do
+    resources :bookings,
+              only: %i[new create]
+  end
+
+  resources :bookings,
+          only: %i[index show]
 end
