@@ -1,0 +1,51 @@
+<div class="container mx-auto">
+
+  <div class="max-w-6xl mx-auto mt-10 bg-white p-8 rounded-xl shadow">
+
+    <h1 class="text-center text-2xl font-bold">
+      コンテナの予約
+    </h1>
+
+    <div class="mt-8 space-y-2">
+
+      <p>
+        <span class="font-bold">
+          船社:
+        </span>
+        <%= @voyage.carrier.name %>
+      </p>
+
+      <p>
+        <span class="font-bold">
+          航路:
+        </span>
+        <%= @voyage.route.departure_port.name %>
+        →
+        <%= @voyage.route.arrival_port.name %>
+      </p>
+
+      <p>
+        <span class="font-bold">
+          出港日:
+        </span>
+        <%= @voyage.departure_date %>
+      </p>
+
+      <p>
+        <span class="font-bold">
+          コンテナ種別:
+        </span>
+        <%= @booking.container_type_i18n %>
+      </p>
+
+    </div>
+
+    <div class="mt-6">
+      <%= render "form",
+          booking: @booking,
+          voyage: @voyage %>
+    </div>
+
+  </div>
+
+</div>

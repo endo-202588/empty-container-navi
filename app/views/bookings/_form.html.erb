@@ -1,0 +1,22 @@
+<%= simple_form_for [@voyage, booking] do |f| %>
+
+  <%= f.hidden_field :container_type %>
+
+  <%= f.input :quantity,
+      label: "本数",
+      input_html: {
+        min: 1,
+        step: 1
+      } %>
+
+  <%= f.input :cargo_name,
+      label: "貨物名" %>
+
+  <%= f.input :cargo_detail,
+      as: :text,
+      label: "貨物詳細" %>
+
+  <%= f.button :submit,
+      "予約する" %>
+
+<% end %>
