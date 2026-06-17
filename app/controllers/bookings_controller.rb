@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  # before_action :set_booking, only: %i[show edit update destroy]
+  before_action :set_booking, only: %i[destroy]
   before_action :set_voyage, only: %i[create]
 
   def new
@@ -51,6 +51,26 @@ class BookingsController < ApplicationController
   end
 
   def index
+    @bookings =
+      current_user
+        .bookings
+        .includes(
+          voyage: [
+            :carrier,
+            {
+              route: %i[
+                departure_port
+                arrival_port
+              ]
+            }
+          ]
+        )
+        .order(created_at: :desc)
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to bookings_path, success: "削除しました"
   end
 
   private

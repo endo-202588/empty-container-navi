@@ -17,6 +17,8 @@
       label: "貨物詳細" %>
 
   <%= f.button :submit,
-      "予約する" %>
-
+      "予約する",
+      data: {
+        disable_with: "予約中..."
+      } %>
 <% end %>

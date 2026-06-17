@@ -33,5 +33,5 @@ Rails.application.routes.draw do
   end
 
   resources :bookings,
-          only: %i[index show]
+          only: %i[index show destroy]
 end

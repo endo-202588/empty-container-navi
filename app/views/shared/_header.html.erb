@@ -30,6 +30,9 @@
         <span>このアプリの使い方</span>
       <% end %>
 
+      <%= link_to "予約一覧", bookings_path,
+        class: "flex items-center gap-1 text-gray-700 font-medium hover:text-yellow-500 whitespace-nowrap" %>
+
       <% if current_user.admin? %>
         <div class="relative group">
           <button class="text-gray-700 font-medium hover:text-yellow-500 whitespace-nowrap">管理</button>
