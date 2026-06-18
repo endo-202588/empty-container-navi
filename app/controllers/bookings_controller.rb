@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       BookingMailer.completed(@booking).deliver_now
-      
+
       redirect_to @booking, success: "予約を登録しました"
     else
       render :new, status: :unprocessable_content
