@@ -1,0 +1,133 @@
+<div class="container mx-auto">
+
+  <div class="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-xl shadow">
+
+    <h1 class="text-center text-2xl font-bold text-sky-700">
+      予約一覧
+    </h1>
+
+    <div class="mt-8">
+
+      <table class="min-w-full">
+
+        <tbody class="divide-y divide-gray-200">
+
+          <tr>
+            <th class="w-48 px-4 py-3 text-left bg-sky-50">
+              予約番号
+            </th>
+
+            <td class="px-4 py-3 font-semibold">
+              <%= @booking.booking_number %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="px-4 py-3 text-left bg-sky-50">
+              予約者
+            </th>
+
+            <td class="px-4 py-3">
+              <%= @booking.user.decorate.full_name %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="px-4 py-3 text-left bg-sky-50">
+              会社名
+            </th>
+
+            <td class="px-4 py-3">
+              <%= @booking.user.company_name %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="px-4 py-3 text-left bg-sky-50">
+              船社
+            </th>
+
+            <td class="px-4 py-3">
+              <%= @booking.voyage.carrier.name %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="px-4 py-3 text-left bg-sky-50">
+              航路
+            </th>
+
+            <td class="px-4 py-3">
+              <%= @booking.voyage.route.departure_port.name %>
+              →
+              <%= @booking.voyage.route.arrival_port.name %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="px-4 py-3 text-left bg-sky-50">
+              出港日
+            </th>
+
+            <td class="px-4 py-3">
+              <%= @booking.voyage.departure_date %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="px-4 py-3 text-left bg-sky-50">
+              コンテナ種別
+            </th>
+
+            <td class="px-4 py-3">
+              <%= @booking.container_type_i18n %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="px-4 py-3 text-left bg-sky-50">
+              本数
+            </th>
+
+            <td class="px-4 py-3">
+              <%= @booking.quantity %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="px-4 py-3 text-left bg-sky-50">
+              貨物名
+            </th>
+
+            <td class="px-4 py-3">
+              <%= @booking.cargo_name %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="px-4 py-3 text-left bg-sky-50">
+              貨物詳細
+            </th>
+
+            <td class="px-4 py-3">
+              <%= @booking.cargo_detail.presence || "なし" %>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <div class="mt-8">
+
+      <%= link_to "港一覧へ戻る",
+          ports_path,
+          class: "inline-block px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition" %>
+
+    </div>
+
+  </div>
+
+</div>

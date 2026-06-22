@@ -14,6 +14,8 @@ Rails.application.routes.draw do
           only: %i[index new create edit update destroy]
     resources :routes
     resources :voyages
+    resources :bookings,
+          only: %i[index show destroy]
   end
 
   resources :ports, only: %i[index show]
