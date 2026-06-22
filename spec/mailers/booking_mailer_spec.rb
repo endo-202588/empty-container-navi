@@ -8,8 +8,8 @@ RSpec.describe BookingMailer, type: :mailer do
 
     it "メールが生成されること" do
       expect(mail.subject).to eq("予約受付のお知らせ")
-      expect(mail.to).to eq([booking.user.email])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.to).to eq([ booking.user.email ])
+      expect(mail.from).to eq([ "from@example.com" ])
     end
   end
 end
