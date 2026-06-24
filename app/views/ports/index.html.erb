@@ -8,7 +8,7 @@
       <% @ports.each do |port| %>
 
         <%= link_to port_path(port),
-            class: "absolute block",
+            class: "absolute block text-cyan-700 hover:text-cyan-500 cursor-pointer",
             style: "
               left: #{port.map_x}%;
               top: #{port.map_y}%;
