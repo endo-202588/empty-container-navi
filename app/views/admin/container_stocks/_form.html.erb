@@ -1,6 +1,7 @@
 <%= simple_form_for [:admin, container_stock] do |f| %>
 
   <%= f.association :port,
+      collection: Port.where(country: "JP").order(:name),
       label: "港" %>
 
   <%= f.association :carrier,
