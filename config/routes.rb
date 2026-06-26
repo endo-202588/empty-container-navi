@@ -26,13 +26,13 @@ Rails.application.routes.draw do
   post   "login",  to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
 
-  get "guide", to: "guides#show"
-
   resources :voyages,
             only: %i[show] do
     resources :bookings,
               only: %i[new create]
   end
+
+  get "guide", to: "guides#show", as: :guide
 
   resources :bookings,
           only: %i[index show destroy]
