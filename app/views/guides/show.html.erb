@@ -1,4 +1,102 @@
-<div>
-  <h1 class="font-bold text-4xl">Guides#show</h1>
-  <p>Find me in app/views/guides/show.html.erb</p>
+<div class="container mx-auto max-w-4xl px-4 py-10">
+  <div class="bg-white rounded-xl shadow p-6 md:p-10">
+    <h1 class="text-3xl font-extrabold text-sky-900 mb-2">
+      空コンナビの使い方
+    </h1>
+
+    <div>
+      <p class="text-slate-600 mb-3">
+        日本全国の港にあるコンテナ在庫の確認や、コンテナの予約ができます。
+      </p>
+    </div>
+
+    <div class="space-y-8">
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-800 mb-3">
+          1. ユーザー登録
+        </h2>
+        <ul class="list-disc pl-6 text-slate-700 space-y-2">
+          <li>必要事項（名前やメールアドレスなど）を入力し、アカウント登録</li>
+          <li>ログインして利用を開始</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-800 mb-3">
+          2. 港一覧から目的の港を探す
+        </h2>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-800 mb-3">
+          3. 港名をクリックして、詳細を確認
+        </h2>
+        <ul class="list-disc pl-6 text-slate-700 space-y-2">
+          <li>目的の港から出発する航路を確認</li>
+          <li>ドライ・リーファーコンテナの在庫を確認</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-800 mb-3">
+          4. コンテナを予約
+        </h2>
+        <ul class="list-disc pl-6 text-slate-700 space-y-2">
+          <li>ドライかリーファーを選択</li>
+          <li>予約する個数などを選択</li>
+          <li>必要事項を入力し、予約完了！</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-800 mb-3">
+          よくある質問
+        </h2>
+
+        <details class="rounded-lg border border-slate-200 p-4 mb-3">
+          <summary class="font-bold text-slate-800 cursor-pointer">
+            Q. 自分が猫を飼っていなくても楽しめますか？
+          </summary>
+          <p class="mt-3 text-slate-700">
+            もちろんです！普段猫さんと接する機会が少ない方も、このアプリで猫さんたちを交流してください。
+          </p>
+        </details>
+
+        <details class="rounded-lg border border-slate-200 p-4 mb-3">
+          <summary class="font-bold text-slate-800 cursor-pointer">
+            Q. 推しにゃんドルに何かプレゼントをしたいのですが？
+          </summary>
+          <p class="mt-3 text-slate-700">
+            "欲しいものリスト"からにゃんドルに好きなものをプレゼントすることができます。
+          </p>
+        </details>
+
+        <details class="rounded-lg border border-slate-200 p-4">
+          <summary class="font-bold text-slate-800 cursor-pointer">
+            Q. 実際ににゃんドルに会いに行くことはできますか？
+          </summary>
+          <p class="mt-3 text-slate-700">
+            申し訳ありません。にゃんドルたちは知らない人が苦手な子が多いため、アプリ内で応援してあげてください！
+          </p>
+        </details>
+      </section>
+
+    </div>
+
+    <div class="mt-10 flex justify-center">
+      <% if current_user %>
+        <%= link_to ports_path,
+          class: "inline-flex items-center px-6 py-3 rounded-lg bg-sky-700 hover:bg-sky-600 text-white font-bold transition" do %>
+          港一覧へ
+        <% end %>
+      <% else %>
+        <%= link_to login_path,
+          class: "inline-flex items-center px-6 py-3 rounded-lg bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold transition" do %>
+          ログイン画面へ
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
 </div>
