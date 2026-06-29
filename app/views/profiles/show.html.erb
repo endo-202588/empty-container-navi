@@ -26,11 +26,22 @@
         <%= @user.last_name %>
       </p>
     </div>
+
+    <div>
+      <p class="text-sm text-gray-500">姓</p>
+      <p class="text-lg">
+        <%= @user.email %>
+      </p>
+    </div>
     
     <div class="flex gap-2 pt-4">
       <%= link_to "プロフィールを編集",
           edit_profile_path,
           class: "inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+
+      <%= link_to "メールアドレスを変更する",
+          edit_email_path,
+          class: "inline-block bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700" %>
     </div>
 
   </div>
