@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   resource :profile, only: %i[show edit update]
 
+  resource :email, only: %i[edit update]
+
   get    "login",  to: "user_sessions#new"
   post   "login",  to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
