@@ -49,7 +49,7 @@
       <% end %>
 
       <%= link_to "#{current_user.decorate.full_name}さん",
-                "#",
+                profile_path(current_user),
                 class: "font-semibold text-sky-800 hover:text-sky-600 whitespace-nowrap" %>
 
       <div>
@@ -75,7 +75,7 @@
       <%= link_to "にゃんドル管理", admin_routes_path, class: "block px-2 py-1 hover:bg-sky-100" %>
     <% end %>
 
-    <%= link_to "#{current_user.first_name}さん", "#", class: "block px-2 py-1 hover:bg-yellow-100" %>
+    <%= link_to "#{current_user.first_name}さん", profile_path(current_user), class: "block px-2 py-1 hover:bg-yellow-100" %>
     <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, class: "block px-2 py-1 hover:bg-yellow-100" %>
   </div>
 </header>
