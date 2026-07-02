@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   resource :profile, only: %i[show edit update]
 
+  resources :password_resets, param: :token
+
   resource :email, only: %i[edit update]
 
   get    "login",  to: "user_sessions#new"
