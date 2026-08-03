@@ -1,30 +1,37 @@
-Port.find_or_create_by!(name: "東京港")
-Port.find_or_create_by!(name: "川崎港")
-Port.find_or_create_by!(name: "横浜港")
-Port.find_or_create_by!(name: "神戸港")
+ports = {
+  "東京" => [ 64.0, 68.9 ],
+  "横浜" => [ 64.0, 72.4 ],
+  "神戸" => [ 34.3, 74.5 ],
+  "川崎" => [ 64.0, 70.7 ],
+  "清水" => [ 55.7, 74.3 ],
+  "大阪" => [ 38.0, 74.6 ],
+  "博多" => [ 4.9, 82.0 ],
+  "北九州" => [ 6.5, 80.3 ],
+  "下関" => [ 8.7, 78.4 ],
+  "名古屋" => [ 47.7, 72.1 ],
+  "四日市" => [ 43.2, 73.7 ],
+  "千葉" => [ 67.8, 69.7 ]
+}
 
-Carrier.find_or_create_by!(name: "ONE")
-Carrier.find_or_create_by!(name: "MSC")
-Carrier.find_or_create_by!(name: "Maersk")
+port_records = {}
 
-tokyo = Port.find_or_create_by!(name: "東京港")
-tokyo.update!(map_x: 59, map_y: 68)
+ports.each do |name, (x, y)|
+  port = Port.find_or_create_by!(name: name)
 
-kawasaki = Port.find_or_create_by!(name: "川崎港")
-kawasaki.update!(map_x: 59, map_y: 69.5)
+  port.update!(
+    map_x: x,
+    map_y: y
+  )
 
-yokohama = Port.find_or_create_by!(name: "横浜港")
-yokohama.update!(map_x: 59, map_y: 71)
+  port_records[name] = port
+end
 
-kobe = Port.find_or_create_by!(name: "神戸港")
-kobe.update!(map_x: 40, map_y: 73)
-
-one = Carrier.find_by!(name: "ONE")
-msc = Carrier.find_by!(name: "MSC")
-maersk = Carrier.find_by!(name: "Maersk")
+one = Carrier.find_or_create_by!(name: "ONE")
+msc = Carrier.find_or_create_by!(name: "MSC")
+maersk = Carrier.find_or_create_by!(name: "Maersk")
 
 ContainerStock.find_or_create_by!(
-  port: tokyo,
+  port: port_records["東京"],
   carrier: one,
   container_type: :dry
 ) do |stock|
@@ -32,7 +39,7 @@ ContainerStock.find_or_create_by!(
 end
 
 ContainerStock.find_or_create_by!(
-  port: tokyo,
+  port: port_records["東京"],
   carrier: msc,
   container_type: :dry
 ) do |stock|
@@ -40,7 +47,7 @@ ContainerStock.find_or_create_by!(
 end
 
 ContainerStock.find_or_create_by!(
-  port: tokyo,
+  port: port_records["東京"],
   carrier: one,
   container_type: :reefer
 ) do |stock|
@@ -48,7 +55,7 @@ ContainerStock.find_or_create_by!(
 end
 
 ContainerStock.find_or_create_by!(
-  port: yokohama,
+  port: port_records["横浜"],
   carrier: one,
   container_type: :dry
 ) do |stock|
@@ -56,7 +63,7 @@ ContainerStock.find_or_create_by!(
 end
 
 ContainerStock.find_or_create_by!(
-  port: yokohama,
+  port: port_records["横浜"],
   carrier: maersk,
   container_type: :reefer
 ) do |stock|
